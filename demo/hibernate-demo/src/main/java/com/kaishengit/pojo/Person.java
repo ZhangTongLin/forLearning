@@ -1,0 +1,37 @@
+package com.kaishengit.pojo;
+
+import java.util.Set;
+
+/**
+ * @author Tonglin
+ */
+public class Person {
+
+    private Integer id;
+    private String name;
+    private Set<Address> addressSet;
+
+    public Set<Address> getAddressSet() {
+        return addressSet;
+    }
+
+    public void setAddressSet(Set<Address> addressSet) {
+        this.addressSet = addressSet;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}

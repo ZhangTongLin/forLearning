@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kaishengit.mapper.StudentMapper">
+
+    <insert id="createStudent" parameterType="student">
+      INSERT into t_stu (stu_name,stu_tel) VALUES (#{stuName},#{stuTel})
+    </insert>
+    <delete id="deleteStudentById" parameterType="int">
+        DELETE FROM t_stu where stu_id = #{id}
+    </delete>
+    <update id="updateStudent" parameterType="student">
+        UPDATE t_stu
+        SET stu_name = #{stuName},stu_tel = #{stuTel} where stu_id = #{stuId};
+    </update>
+    <select id="findAllStudent" resultType="student">
+        select * from t_stu;
+    </select>
+    <select id="findStudentById" parameterType="int" resultType="student">
+        select * from t_stu where stu_id = #{id}
+    </select>
+    <select id="page" resultType="student">
+        select * from t_stu limit #{offset}, #{size};
+    </select>
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd">
+
+    <context:component-scan base-package="com.kaishengit"/>
+
+    <!--ActiveMQConnectionFactory-->
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+    </bean>
+
+    <!--Spring JMS ConnectionFactory-->
+    <bean id="singleConnectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+        <property name="targetConnectionFactory" ref="connectionFactory"/>
+    </bean>
+    <!--JMS template-->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <!--配置连接工厂-->
+        <property name="connectionFactory" ref="singleConnectionFactory"/>
+        <!--选配 目的地-->
+        <property name="defaultDestinationName" value="spring-queue"/>
+    </bean>
+
+    <bean id="defaultJmsListenerContainerFactory" class="org.springframework.jms.config.DefaultJmsListenerContainerFactory">
+        <property name="connectionFactory" ref="singleConnectionFactory"/>
+        <property name="concurrency" value="5-15"/>
+    </bean>
+    <jms:annotation-driven container-factory="defaultJmsListenerContainerFactory"/>
+
+
+    <bean id="activeMQTopic" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg name="name" value="spring-topic"/>
+    </bean>
+
+    <!--<bean id="listenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">-->
+        <!--<property name="connectionFactory" ref="singleConnectionFactory"/>-->
+        <!--<property name="destinationName" value="spring-topic"/>-->
+        <!--<property name="destination" ref="activeMQTopic"/>-->
+        <!--<property name="messageListener" ref="springConsumer"/>-->
+    <!--</bean>-->
+
+</beans>

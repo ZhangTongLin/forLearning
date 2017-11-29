@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:aop="http://www.springframework.org/schema/aop"
+                xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+                http://www.springframework.org/schema/aop
+                http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <bean id="userService" class="com.kaishengit.service.impl.UserServiceImpl"/>
+    <bean id="userDao" class="com.kaishengit.dao.UserDao"/>
+    <!--配置通知类-->
+    <bean id="aopAspect" class="com.kaishengit.proxy.AopAspect"/>
+    <!--配置AOP-->
+    <aop:config>
+        <aop:aspect ref="aopAspect">
+        <!--指定目标对象 的范围-->
+            <aop:pointcut id="pointCut" expression="execution(* com.kaishengit.service..*.*(..))"/>
+            <!--<aop:before method="beforeAspect" pointcut-ref="pointCut"/>
+            <aop:after-returning method="afterReturning"  pointcut-ref="pointCut" returning="result"/>
+            <aop:after-throwing method="afterThrowing" pointcut-ref="pointCut" throwing="ex"/>
+            <aop:after method="after" pointcut-ref="pointCut"/>-->
+            <aop:around method="around" pointcut-ref="pointCut"/>
+        </aop:aspect>
+
+    </aop:config>
+
+<!--
+    <bean id="userDao" class="com.kaishengit.dao.UserDao"/>
+-->
+
+ <!--   <bean id="userService" class="com.kaishengit.service.impl.UserServiceImpl" autowire="byType">
+        &lt;!&ndash;自动注入&ndash;&gt;
+    </bean>-->
+    <!--<bean id="userService" class="com.kaishengit.service.impl.UserServiceImpl">
+        &lt;!&ndash;构造方法注入&ndash;&gt;
+        &lt;!&ndash;<constructor-arg name="userDao" ref="userDao"/>&ndash;&gt;
+        &lt;!&ndash;<constructor-arg type="com.kaishengit.dao.UserDao" ref="userDao"/>&ndash;&gt;
+        <constructor-arg index="0" ref="userDao"/>
+    </bean>-->
+
+
+
+
+<!--    <bean id="userService" class="com.kaishengit.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+        <property name="id" value="1"/>
+        <property name="list">
+            <list>
+                <value>aaa</value>
+                <value>bbb</value>
+            </list>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="p1">v1</prop>
+                <prop key="p2">v2</prop>
+            </props>
+        </property>
+        <property name="userDaoMap">
+            <map>
+                <entry key="k1" value-ref="userDao"/>
+            </map>
+        </property>
+    </bean>-->
+    <!--  <bean id="userService" class="com.kaishengit.service.impl.UserServiceImpl">
+
+    <property name="userDao">
+        <ref bean="userDao"/>
+    </property>&ndash;&gt;
+    <property name="userDao">
+        <bean class="com.kaishengit.dao.UserDao"/>
+    </property>
+</bean>-->
+<!--
+    <bean id="userService" class="com.kaishengit.service.impl.UserServiceImpl" p:userDao-ref="userDao"/>
+-->
+
+</beans>

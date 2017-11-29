@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.kaishengit.pojo">
+    <!--配置表和pojo对应-->
+    <class name="KaolaType" table="kaola_type">
+        <id name="id"/>
+        <property name="typeName" column="type_name"/>
+        <property name="parentId" column="parent_id"/>
+        <!--inverse 放弃关系维护-->
+        <set name="kaolaSet" order-by="id desc" inverse="true" cascade="delete">
+            <key column="type_id"></key>
+            <one-to-many class="Kaola"/>
+        </set>
+    </class>
+</hibernate-mapping>

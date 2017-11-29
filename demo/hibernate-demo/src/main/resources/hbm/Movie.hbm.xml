@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--配置表和pojo对应-->
+    <class name="com.kaishengit.pojo.Movie" table="t_movie">
+        <!--配置列和属性对应 属性名和列名相同的话 column可以省略-->
+        <id name="id" column="id">
+            <!--native  主键属性自动增长-->
+            <generator class="native"/>
+        </id>
+        <property name="title" column="title"/>
+        <property name="director" column="director"/>
+    </class>
+</hibernate-mapping>

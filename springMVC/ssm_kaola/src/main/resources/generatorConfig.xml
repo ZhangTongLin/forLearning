@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--连接数据库 的jar包的位置-->
+    <classPathEntry location="E:\workjars\mysql-connector-java-5.1.38.jar"/>
+    <!--id自定义
+        targetRuntime : MyBatis3Simple 生成简单的CRUD语句
+                        MyBatis3 生成带Example类 的CRUD语句
+    -->
+    <context id="myConfig" targetRuntime="MyBatis3">
+        <!--去掉自动产生的注释-->
+        <commentGenerator>
+            <!--是否去掉注释  true 表示去掉 false表示不去掉-->
+            <property name="suppressAllComments" value="true"/>
+            <!--每个类产生的日期-->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <!--连接数据库 的信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql:///students?useSSL=false"
+                        userId="root" password="123456"/>
+        <!--POJO  实体类位置配置-->
+        <javaModelGenerator targetPackage="com.kaishengit.entity" targetProject="src/main/java"/>
+        <!--xml的映射文件-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+        <!--Mapper接口-->
+        <javaClientGenerator type="XMLMAPPER" targetProject="src/main/java" targetPackage="com.kaishengit.mapper"/>
+        <!--table配置-->
+        <table tableName="kaola"/><!-- domainObjectName="Student" enableSelectByExample="true"-->
+    </context>
+</generatorConfiguration>

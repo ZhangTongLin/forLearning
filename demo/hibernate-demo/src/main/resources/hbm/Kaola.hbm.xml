@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.kaishengit.pojo">
+    <!--配置表和pojo对应-->
+    <class name="Kaola" table="kaola">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="productName" column="product_name"/>
+        <property name="marketPrice" column="market_price"/>
+        <property name="price" />
+        <property name="place"/>
+        <property name="commentNum" column="comment_num"/>
+        <many-to-one name="kaolaType" class="KaolaType" column="type_id" fetch="join"/>
+    </class>
+</hibernate-mapping>
