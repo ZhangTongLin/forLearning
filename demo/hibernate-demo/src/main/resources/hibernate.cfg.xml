@@ -26,14 +26,38 @@
         <property name="show_sql">true</property>
         <!--自动将session绑定到主线程，在获取当前session的时候不需要重新打开-->
         <property name="current_session_context_class">thread</property>
+        <!--设置二级缓存-->
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+        <!--设置事务隔离级别-->
+        <!--<property name="connection.isolation">4</property>-->
+
+
+        <!--POJO类的注册-->
+        <mapping class="com.kaishengit.pojo.Movie"/>
+        <mapping class="com.kaishengit.pojo.Person"/>
+        <mapping class="com.kaishengit.pojo.Address"/>
+        <mapping class="com.kaishengit.pojo.Student"/>
+        <mapping class="com.kaishengit.pojo.Teacher"/>
+        <mapping class="com.kaishengit.pojo.Article"/>
+        <mapping class="com.kaishengit.pojo.Content"/>
+        <mapping class="com.kaishengit.pojo.People"/>
+        <mapping class="com.kaishengit.pojo.Card"/>
+        <mapping class="com.kaishengit.pojo.Customer"/>
+
+
 
         <!--配置映射文件  注册映射文件-->
-        <mapping resource="hbm/Movie.hbm.xml"/>
-        <mapping resource="hbm/Kaola.hbm.xml"/>
-        <mapping resource="hbm/KaolaType.hbm.xml"/>
-        <mapping resource="hbm/Person.hbm.xml"/>
-        <mapping resource="hbm/Address.hbm.xml"/>
-        <mapping resource="hbm/Student.hbm.xml"/>
-        <mapping resource="hbm/Teacher.hbm.xml"/>
+        <!--<mapping resource="hbm/Movie.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Kaola.hbm.xml"/>-->
+        <!--<mapping resource="hbm/KaolaType.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Person.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Address.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Student.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Teacher.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Card.hbm.xml"/>-->
+        <!--<mapping resource="hbm/People.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Article.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Content.hbm.xml"/>-->
+        <!--<mapping resource="hbm/Customer.hbm.xml"/>-->
     </session-factory>
 </hibernate-configuration>

@@ -69,6 +69,27 @@ public class ManyToOneTestCase {
     }
 
     @Test
+    public void lazyInit() {
+
+//        Address address = (Address) session.get(Address.class,2);
+//        System.out.println(address.getStreet());
+//
+//        Person person = address.getPerson();
+//        System.out.println(person.getName());
+
+
+        Person person = (Person) session.get(Person.class,2);
+        System.out.println(person.getName());
+
+
+        Set<Address> addressSet = person.getAddressSet();
+        for (Address address : addressSet) {
+            System.out.println(address.getStreet());
+        }
+
+    }
+
+    @Test
     public void save() {
         KaolaType kaolaType = (KaolaType) session.get(KaolaType.class,27);
 
@@ -76,7 +97,7 @@ public class ManyToOneTestCase {
         kaola.setPlace("ri本");
         kaola.setCommentNum(20);
         kaola.setMarketPrice(BigDecimal.valueOf(200));
-        kaola.setProductName("手机");
+        kaola.setProductName("电脑");
         kaola.setKaolaType(kaolaType);
 
         session.save(kaola);
@@ -88,11 +109,11 @@ public class ManyToOneTestCase {
     public void save1() {
 
         Person person = new Person();
-        person.setName("json");
+        person.setName("jkson");
 
         Address address = new Address();
         address.setAddress("中国");
-        address.setStreet("上海");
+        address.setStreet("beijing");
         address.setPerson(person);
 
         Address address2 = new Address();

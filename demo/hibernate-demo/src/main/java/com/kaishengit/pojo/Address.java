@@ -1,13 +1,23 @@
 package com.kaishengit.pojo;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.LazyToOne;
+
+import javax.persistence.*;
+
 /**
  * @author Tonglin
  */
+@Entity
 public class Address {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String address;
     private String street;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "p_id")
     private Person person;
 
     public Person getPerson() {

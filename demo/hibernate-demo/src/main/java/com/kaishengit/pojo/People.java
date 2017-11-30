@@ -1,28 +1,28 @@
 package com.kaishengit.pojo;
 
 import javax.persistence.*;
-import java.util.Set;
 
 /**
  * @author Tonglin
  */
 @Entity
-public class Person {
+@Table(name = "people")
+public class People {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column(name = "name")
     private String name;
-    @OneToMany(mappedBy = "person")
-    private Set<Address> addressSet;
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private Card card;
 
-    public Set<Address> getAddressSet() {
-        return addressSet;
+    public Card getCard() {
+        return card;
     }
 
-    public void setAddressSet(Set<Address> addressSet) {
-        this.addressSet = addressSet;
+    public void setCard(Card card) {
+        this.card = card;
     }
 
     public Integer getId() {

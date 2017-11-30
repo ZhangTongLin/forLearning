@@ -98,7 +98,6 @@ public class ManyToMany {
         session.save(student);
         session.save(student2);
 
-
     }
 
 }

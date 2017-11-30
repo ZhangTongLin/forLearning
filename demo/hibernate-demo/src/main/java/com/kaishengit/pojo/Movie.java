@@ -1,11 +1,19 @@
 package com.kaishengit.pojo;
 
+import javax.annotation.Generated;
+import javax.persistence.*;
+
 /**
  * @author Tonglin
  */
+@Entity
+@Table(name = "t_movie")
 public class Movie {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @Column(name = "title")
     private String title;
     private String director;
 

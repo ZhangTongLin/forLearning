@@ -5,6 +5,8 @@
 <hibernate-mapping package="com.kaishengit.pojo">
     <!--配置表和pojo对应-->
     <class name="Student" table="student">
+        <!--使用缓存-->
+        <cache usage="read-write"/>
         <id name="id">
             <generator class="native"/>
         </id>

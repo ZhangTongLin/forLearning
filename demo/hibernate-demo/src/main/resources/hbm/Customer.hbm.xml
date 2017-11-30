@@ -4,14 +4,13 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.kaishengit.pojo">
     <!--配置表和pojo对应-->
-    <class name="Person" table="person">
-        <id name="id">
-            <generator class="native"/>
-        </id>
+    <class name="Customer" table="customer">
+      <id name="id">
+          <!--UUID主键生成策略-->
+          <generator class="uuid"/>
+      </id>
+        <!--乐观锁配置-->
+        <version name="version"/>
         <property name="name"/>
-        <set name="addressSet" order-by="id"  inverse="true" cascade="delete">
-            <key column="p_id"></key>
-            <one-to-many class="Address"/>
-        </set>
     </class>
 </hibernate-mapping>

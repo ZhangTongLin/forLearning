@@ -4,14 +4,11 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.kaishengit.pojo">
     <!--配置表和pojo对应-->
-    <class name="Person" table="person">
+    <class name="Article" table="article">
         <id name="id">
             <generator class="native"/>
         </id>
-        <property name="name"/>
-        <set name="addressSet" order-by="id"  inverse="true" cascade="delete">
-            <key column="p_id"></key>
-            <one-to-many class="Address"/>
-        </set>
+        <property name="title"/>
+        <one-to-one name="content" class="Content"/>
     </class>
 </hibernate-mapping>

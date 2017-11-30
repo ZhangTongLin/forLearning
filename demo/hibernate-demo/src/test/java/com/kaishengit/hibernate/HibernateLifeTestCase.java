@@ -35,7 +35,7 @@ public class HibernateLifeTestCase {
 
     @Test
     public void test1() {
-        Movie movie = (Movie) session.load(Movie.class,171);
+        Movie movie = (Movie) session.load(Movie.class,3);
         //System.out.println(movie);
 
         //session.getTransaction().commit();
@@ -45,8 +45,8 @@ public class HibernateLifeTestCase {
     @Test
     public void test2(){
         Movie movie = new Movie();
-        movie.setTitle("testt");
-        movie.setDirector("testee");
+        movie.setTitle("test1");
+        movie.setDirector("test1");
         //session.save(movie);
         session.persist(movie);
         System.out.println(movie.getId());
