@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="head(title,year)">
+    <h1 >hello include, <span th:text="${title}+'>'+${year}"></span></h1>
+</div>
+<div id="footer">
+    <h2>hello,footer</h2>
+</div>
+</body>
+</html>

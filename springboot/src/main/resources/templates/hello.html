@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<!--<div th:replace="header::head('hello','abc','aa')"></div>-->
+   <!-- <a th:href="@{/user(id=${user.id})}">hello?id=1</a>
+    <a th:href="@{/user/{id}/{name}/(id=${user.id},name=${user.name})}">123</a>
+
+    <h1 th:attr="user-id=${user.id},user-name=${user.name}">hello SpringBoot</h1>
+    <h1 th:text="${name}">Hello,SpringBoot1-2</h1>
+    &lt;!&ndash;<h2 th:text="${#httpServletRequest.getParameter('p')}"></h2>&ndash;&gt;
+    <h2 th:text="${param.p}"></h2>
+    <h2 th:text="${user.address}"></h2>
+    <h3 th:text="${session.sessionMessage}"></h3>
+    <h1 th:if="${user.name == 'jack'}">hello,jack</h1>
+    <h1 th:unless="${user.name == 'tom'}">hello,tom</h1>
+
+    <ul th:switch="${user.name}">
+        <li th:case="'jack'">hello,jack</li>
+        <li th:case="'tom'">hello,tom</li>
+    </ul>
+
+    <ul>
+       <li th:each="user : ${users}" th:text="${user.name}"></li>
+    </ul>
+
+    <ul>
+        <li th:each="user,iterStat : ${users}" th:text="${iterStat.count + '>>>' + iterStat.index + '>>>' +user.name}"></li>
+    </ul>
+    <div>
+        <input type="text" th:value="123">
+    </div>
+-->
+
+    <!--<img th:src="@{'image/1.jpg'}" src="../static/image/1.jpg"/>-->
+
+
+   <!-- <div th:replace="~{header::#footer}"></div>-->
+<!--<script charset="UTF-8" th:inline="javascript">
+
+    /*[# th:if="${user.name == 'jack'}"]
+    var id = [[${user.id}]]
+    var address = [[${user.address}]]
+    [/]*/
+</script>-->
+</body>
+</html>
