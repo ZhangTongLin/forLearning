@@ -1,9 +1,14 @@
 package com.kaishengit.helloWord;
 
+import com.kaishengit.dao.MovieDao;
+import com.kaishengit.entity.Movie;
 import com.kaishengit.entity.User;
+import com.kaishengit.mapper.MovieMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
@@ -15,6 +20,11 @@ import java.util.List;
  */
 @Controller
 public class HelloWord {
+
+    @Autowired
+    private MovieDao movieDao;
+    @Autowired
+    private MovieMapper movieMapper;
 
     @GetMapping("/hello")
     public String helloWord() {
@@ -35,4 +45,16 @@ public class HelloWord {
         return "test";
     }
 
+
+    @GetMapping("/layout")
+    public String layout() {
+        return "index";
+    }
+
+    @GetMapping("/save")
+    @ResponseBody
+    public String save() {
+        movieMapper.save(new Movie("快餐车","成龙"));
+        return "hi";
+    }
 }

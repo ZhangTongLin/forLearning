@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Title</title>
+    <link href="css/layout.a.css" rel="script">
+</head>
+<body>
+    <h1>header</h1>
+    <div layout:fragment="content">
+
+    </div>
+    <h3>
+        footer
+        <p layout:fragment="footer"></p>
+    </h3>
+    <script layout:fragment="js"></script>
+</body>
+</html>
